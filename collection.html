@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#04f7f7">
+  <title>Collection | Rustam Super Mart</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="products.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="collection.js" defer></script>
+</head>
+
+<body data-page="collection" data-active-nav="collections" data-search-placeholder="Search products...">
+  <!-- Header (nav bar) is added by script.js, same on every page -->
+  <div id="siteHeader"></div>
+
+  <main>
+    <section class="collections-section wrap">
+      <a class="back-link" href="index.html#collections">← Back to all categories</a>
+      <div class="section-heading">
+        <div>
+          <h2 id="collectionTitle">Collection</h2><span class="heading-underline"></span>
+        </div>
+        <div class="heading-side">
+          <p id="productCount"></p>
+          <button class="black-btn add-btn admin-only" type="button" id="addProductBtn">＋ Add Product</button>
+        </div>
+      </div>
+      <div class="collection-grid" id="productGrid" aria-live="polite"></div>
+      <p class="empty-state" id="emptyState" hidden></p>
+    </section>
+  </main>
+
+  <!-- Footer is added by script.js, same on every page -->
+  <div id="siteFooter"></div>
+
+  <!-- Add / Edit Product form (opened from Edit Mode) -->
+  <div class="modal-backdrop" id="productModal" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="productModalTitle">
+      <button class="modal-close" id="closeProductModal" type="button" aria-label="Close form">×</button>
+      <span class="modal-kicker" id="productKicker">NEW PRODUCT</span>
+      <h2 id="productModalTitle">Add Product</h2>
+      <form id="productForm" novalidate>
+        <label for="productName">Product name <span>*</span></label>
+        <input id="productName" type="text" placeholder="e.g. Chocolate Cream Biscuits" maxlength="60" required>
+
+        <label for="productImage">Product picture (optional)</label>
+        <label class="upload-box" for="productImage"><span class="upload-icon">＋</span><strong
+            id="productUploadTitle">Choose an image</strong><small id="productUploadHint">PNG, JPG, WEBP · Max 5 MB
+            (optional)</small><img id="productPreview" alt="Selected product preview" hidden></label>
+        <input class="file-input" id="productImage" type="file" accept="image/png,image/jpeg,image/webp,image/gif">
+
+        <label for="productEmoji">Emoji (shown if there is no picture)</label>
+        <input id="productEmoji" type="text" placeholder="e.g. 🍪" maxlength="8">
+
+        <div class="field-row">
+          <div>
+            <label for="productPrice">Box price (Rs) <span>*</span></label>
+            <input id="productPrice" type="number" min="1" step="any" inputmode="decimal" placeholder="e.g. 480">
+          </div>
+          <div>
+            <label for="productPieces">Pieces in 1 box <span>*</span></label>
+            <input id="productPieces" type="number" min="1" step="1" inputmode="numeric" placeholder="e.g. 12">
+          </div>
+        </div>
+        <div class="field-row">
+          <div>
+            <label for="productCartonPrice">Carton price (Rs) <span>*</span></label>
+            <input id="productCartonPrice" type="number" min="1" step="any" inputmode="decimal" placeholder="e.g. 5600">
+          </div>
+          <div>
+            <label for="productPerCarton">Boxes in 1 carton <span>*</span></label>
+            <input id="productPerCarton" type="number" min="1" step="1" inputmode="numeric" placeholder="e.g. 12">
+          </div>
+        </div>
+
+        <p class="form-error" id="productError" role="alert" hidden></p>
+        <div class="form-actions"><button class="cancel-btn" type="button" id="cancelProductModal">Cancel</button><button
+            class="black-btn save-btn" type="submit" id="saveProductBtn">Save Product <span>→</span></button></div>
+      </form>
+      <p class="storage-note">Your changes are saved in this browser on this device.</p>
+    </section>
+  </div>
+
+  <!-- Login form, Add to Cart form and toast are added by script.js -->
+  <div id="siteModals"></div>
+</body>
+
+</html>

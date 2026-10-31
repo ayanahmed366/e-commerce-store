@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#04f7f7">
+  <title>Rustam Super Mart</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="products.js" defer></script>
+  <script src="script.js" defer></script>
+  <script src="home.js" defer></script>
+</head>
+
+<body data-page="home" data-search-placeholder="Search collections...">
+  <!-- Header (nav bar) is added by script.js, same on every page -->
+  <div id="siteHeader"></div>
+
+  <main id="home">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <span class="eyebrow">YOUR DAILY NEEDS</span>
+        <h1>Rustam <span>Super Mart</span></h1>
+        <p class="hero-points">Fresh Products <b>│</b> Better Quality <b>│</b> Great Prices</p>
+        <p class="hero-description">From daily essentials to your favorite snacks, we bring quality products to your
+          doorstep.</p>
+        <a class="black-btn shop-btn" href="#collections">Shop Now <span>→</span></a>
+      </div>
+      <div class="hero-art" aria-label="Grocery basket illustration" role="img">
+        <div class="sun-disc"></div>
+        <div class="basket">🧺<span>🥬 🍎 🥛 🥖</span><b>RS</b></div><span class="spark spark-one">✦</span><span
+          class="spark spark-two">✦</span>
+      </div>
+    </section>
+
+    <section class="collections-section wrap" id="collections">
+      <div class="section-heading">
+        <div>
+          <h2>Shop by Category</h2><span class="heading-underline"></span>
+        </div>
+        <div class="heading-side">
+          <p id="collectionCount">Explore our everyday essentials</p>
+          <button class="black-btn add-btn admin-only" type="button" id="addCollectionBtn">＋ Add Collection</button>
+        </div>
+      </div>
+      <!-- Collection cards are built by home.js from the store in products.js -->
+      <div class="collection-grid" id="collectionGrid" aria-live="polite"></div>
+      <p class="empty-state" id="emptyState" hidden>No collections match your search.</p>
+    </section>
+
+    <section class="about-strip wrap" id="about">
+      <div class="about-icon">RS</div>
+      <div>
+        <h2>Everyday shopping, made simple.</h2>
+        <p>Quality essentials, friendly service, and convenience for your home.</p>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer is added by script.js, same on every page -->
+  <div id="siteFooter"></div>
+
+  <!-- Add / Edit Collection form (opened from Edit Mode) -->
+  <div class="modal-backdrop" id="collectionModal" hidden>
+    <section class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="closeModal" type="button" aria-label="Close form">×</button>
+      <span class="modal-kicker" id="modalKicker">GROW YOUR STORE</span>
+      <h2 id="modalTitle">Add New Collection</h2>
+      <p class="modal-intro">Add a name, a short English description and (optionally) a picture for the card.</p>
+      <form id="collectionForm">
+        <label for="collectionName">Collection name <span>*</span></label><input id="collectionName"
+          name="collectionName" type="text" placeholder="e.g. Cold Drinks" maxlength="45" required>
+        <label for="collectionImage">Collection picture (optional)</label><label class="upload-box"
+          for="collectionImage"><span class="upload-icon">＋</span><strong id="uploadTitle">Choose an
+            image</strong><small id="uploadHint">PNG, JPG, WEBP · Max 5 MB (optional)</small><img id="imagePreview"
+            alt="Selected collection preview" hidden></label><input class="file-input" id="collectionImage"
+          name="collectionImage" type="file" accept="image/png,image/jpeg,image/webp,image/gif">
+        <label for="collectionDescription">English description <span>*</span></label><textarea
+          id="collectionDescription" name="collectionDescription" rows="3" maxlength="180"
+          placeholder="e.g. Refreshing drinks for every occasion." required></textarea>
+        <p class="form-error" id="formError" role="alert" hidden></p>
+        <div class="form-actions"><button class="cancel-btn" type="button" id="cancelModal">Cancel</button><button
+            class="black-btn save-btn" type="submit" id="saveCollectionBtn">Save Collection <span>→</span></button></div>
+      </form>
+      <p class="storage-note">Your changes are saved in this browser on this device.</p>
+    </section>
+  </div>
+
+  <!-- Login form, Add to Cart form and toast are added by script.js -->
+  <div id="siteModals"></div>
+</body>
+
+</html>
