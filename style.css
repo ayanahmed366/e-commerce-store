@@ -1414,3 +1414,17 @@ body.admin-on .admin-btn {
         font-size: 11px
     }
 }
+
+
+/* ---------- Collection / product pictures (replace the old emoji art) ---------- */
+.product-art {
+    overflow: hidden
+}
+
+.product-art .art-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    border-radius: 8px
+}

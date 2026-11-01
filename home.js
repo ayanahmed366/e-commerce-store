@@ -50,19 +50,7 @@ function makeCollectionCard(item) {
 
   const art = document.createElement('div');
   art.className = `product-art ${item.art || ''}`.trim();
-  if (item.image) {
-    art.classList.add('uploaded-art');
-    const image = document.createElement('img');
-    image.src = item.image;
-    image.alt = item.title;
-    image.loading = 'lazy';
-    image.style.cssText = 'width:100%;height:100%;max-height:145px;object-fit:contain;border-radius:8px;';
-    art.appendChild(image);
-  } else {
-    art.setAttribute('role', 'img');
-    art.setAttribute('aria-label', item.title);
-    art.textContent = item.emoji || '🛒';
-  }
+  art.appendChild(makeArtImage(item.image, item.title));
 
   const content = document.createElement('div');
   content.className = 'card-content';
@@ -180,11 +168,10 @@ form.addEventListener('submit', event => {
       item.title = name;
       item.description = description;
       item.image = selectedImageData;
-      if (!item.image && !item.emoji) item.emoji = '🛒';
     } else {
       list.push({
         id: makeId(name), title: name, description, art: '',
-        emoji: selectedImageData ? '' : '🛒', image: selectedImageData, products: []
+        image: selectedImageData, products: []
       });
     }
   });

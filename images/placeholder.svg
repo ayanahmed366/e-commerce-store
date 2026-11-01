@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 450" width="600" height="450" role="img" aria-label="No picture yet">
+  <rect width="600" height="450" fill="#eef3f4"/>
+  <circle cx="540" cy="60" r="130" fill="#7a8a8c" opacity=".12"/>
+  <circle cx="50" cy="420" r="110" fill="#7a8a8c" opacity=".12"/>
+  <rect x="80" y="110" width="440" height="230" rx="28" fill="#fff" opacity=".85"/>
+  <text text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="44" fill="#222"><tspan x="300" y="225">No picture yet</tspan></text>
+  <text x="300" y="390" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#7a8a8c" letter-spacing="3">RUSTAM SUPER MART</text>
+</svg>

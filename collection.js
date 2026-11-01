@@ -20,7 +20,6 @@ const productImageInput = document.getElementById('productImage');
 const productPreview = document.getElementById('productPreview');
 const productUploadTitle = document.getElementById('productUploadTitle');
 const productUploadHint = document.getElementById('productUploadHint');
-const productEmojiInput = document.getElementById('productEmoji');
 const productPriceInput = document.getElementById('productPrice');
 const productPiecesInput = document.getElementById('productPieces');
 const productCartonPriceInput = document.getElementById('productCartonPrice');
@@ -43,18 +42,7 @@ function makeProductCard(product, artClass) {
 
   const art = document.createElement('div');
   art.className = `product-art ${artClass || ''}`.trim();
-  if (product.image) {
-    const image = document.createElement('img');
-    image.src = product.image;
-    image.alt = product.name;
-    image.loading = 'lazy';
-    image.style.cssText = 'width:100%;height:100%;object-fit:contain;border-radius:8px;';
-    art.appendChild(image);
-  } else {
-    art.setAttribute('role', 'img');
-    art.setAttribute('aria-label', product.name);
-    art.textContent = product.emoji || '🛒';
-  }
+  art.appendChild(makeArtImage(product.image, product.name));
 
   const content = document.createElement('div');
   content.className = 'card-content';
@@ -140,7 +128,6 @@ function openProductModal(product) {
   editingProductId = product ? product.id : null;
   productForm.reset();
   productNameInput.value = product ? product.name : '';
-  productEmojiInput.value = product ? (product.emoji || '') : '';
   productPriceInput.value = product ? product.price : '';
   productPiecesInput.value = product ? product.pieces : '';
   productCartonPriceInput.value = product ? product.cartonPrice : '';
@@ -211,7 +198,6 @@ productForm.addEventListener('submit', event => {
 
   const data = {
     name,
-    emoji: productEmojiInput.value.trim() || '🛒',
     image: productImageData,
     price, pieces, boxesPerCarton, cartonPrice
   };

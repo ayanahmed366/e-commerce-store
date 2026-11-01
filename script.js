@@ -195,6 +195,18 @@ applyAdminMode();
 const MAX_IMAGE_BYTES = 5 * 1024 * 1024; // original file limit (image is shrunk before saving)
 const MAX_IMAGE_SIDE = 600;              // longest side of the saved image, in pixels
 const IMAGE_QUALITY = 0.8;               // JPEG quality for the saved image
+const PLACEHOLDER_IMAGE = 'images/placeholder.svg'; // shown when a picture is missing or fails to load
+function makeArtImage(src, alt) {
+  const img = document.createElement('img');
+  img.className = 'art-img';
+  img.alt = alt || '';
+  img.loading = 'lazy';
+  img.addEventListener('error', () => {
+    if (!img.src.endsWith(PLACEHOLDER_IMAGE)) img.src = PLACEHOLDER_IMAGE;
+  });
+  img.src = src || PLACEHOLDER_IMAGE;
+  return img;
+}
 const IMAGE_HINT = 'PNG, JPG, WEBP · Max 5 MB (optional)';
 function compressImage(file) {
   return new Promise((resolve, reject) => {
