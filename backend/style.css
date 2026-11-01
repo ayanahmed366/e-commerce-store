@@ -23,3 +23,7 @@
 .product-thumb{background:#04f7f7;color:#000}
 .nav-item.active{background:#04f7f7;color:#000}
 .nav-item.active .nav-icon{color:#000}
+.avatar{background:#04f7f7;color:#000}
+.activity-symbol{background:#04f7f7;color:#000}
+.activity-symbol.edit{background:#e5f8fa;color:#028a8a}
+.activity-symbol.remove{background:#ffeded;color:#d34e55}
